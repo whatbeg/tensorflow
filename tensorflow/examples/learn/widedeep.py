@@ -147,7 +147,7 @@ def build_estimator(model_dir, model_type):
   else:
     m = tf.estimator.DNNLinearCombinedClassifier(
         model_dir=model_dir,
-        linear_feature_columns=crossed_columns,
+        linear_feature_columns=base_columns + crossed_columns,
         dnn_feature_columns=deep_columns,
         dnn_hidden_units=[100, 50])
   return m
