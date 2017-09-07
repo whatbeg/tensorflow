@@ -167,7 +167,7 @@ def input_fn(data_file, num_epochs, shuffle):
   return tf.estimator.inputs.pandas_input_fn(
       x=df_data,
       y=labels,
-      batch_size=1200,
+      batch_size=1344,
       num_epochs=num_epochs,
       shuffle=shuffle,
       num_threads=1)
@@ -181,7 +181,7 @@ def train_and_eval(model_dir, model_type, train_steps, train_data, test_data):
 
   m = build_estimator(model_dir, model_type)
   # set num_epochs to None to get infinite stream of data.
-  for epoch in range(200):
+  for epoch in range(train_steps):
     m.train(
         input_fn=input_fn(train_file_name, num_epochs=1, shuffle=True),
         steps=None)
@@ -222,7 +222,7 @@ if __name__ == "__main__":
   parser.add_argument(
       "--train_steps",
       type=int,
-      default=200,
+      default=100,
       help="Number of training steps."
   )
   parser.add_argument(
