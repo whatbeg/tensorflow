@@ -167,7 +167,7 @@ def input_fn(data_file, num_epochs, shuffle):
   return tf.estimator.inputs.pandas_input_fn(
       x=df_data,
       y=labels,
-      batch_size=1344,
+      batch_size=1152,
       num_epochs=num_epochs,
       shuffle=shuffle,
       num_threads=1)
